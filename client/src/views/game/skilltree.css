@@ -1,0 +1,116 @@
+
+  
+  button.upgrade {
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1vmax !important;
+    size: 10vmax;
+  }
+  
+  button:disabled {
+    background-color: #da1d1dc9 !important;
+    cursor: not-allowed;
+    font-size: 1vmax;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 3px;
+  }
+  
+ 
+
+
+  .modal {
+    border: 20px solid transparent; /* Make the border transparent */
+    border-image-source: url(./fireborder.gif);
+    border-image-slice: 35;
+    border-image-repeat: round;
+    border-image-outset:1; /* Adjust this value to control spacing */
+    z-index: 2;
+    background-color: #000;
+    color: #ffffff;
+  } 
+
+  
+@keyframes result-animation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0);
+    opacity: 2;
+  }
+  70% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  90% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+  
+.modalBlue {
+  border: 20px solid transparent ;
+  border-image-source: url(./fireborder.gif);
+  border-image-slice: 103.5; /* Half of the GIF's size */
+  border-image-repeat: fill ; /* Fill the entire border with the image */
+  border-image-outset: 1; /* Adjust this value to control spacing */
+  z-index: 2;
+  background-color: #00000000;
+  color: #ffffff;
+}
+
+
+.enemyteam-box.selected {
+   
+  transform: scale(1.15);
+  border: 5px solid transparent ;
+  border-image-source: url(./fireborder.gif);
+  border-image-slice: 10.5; /* Half of the GIF's size */
+  border-image-repeat: fill round ; /* Fill the entire border with the image */
+  border-image-outset: 1; /* Adjust this value to control spacing */
+  filter: hue-rotate(330deg);
+  z-index: auto;
+  border-radius: 50%;
+  animation: teams-animation 2s  infinite;
+
+}
+
+@keyframes teams-animation {
+  0% {
+    transform: scale(1);
+   
+  }
+  50% {
+    transform: scale(1.1);
+ 
+  }
+  100% {
+    transform: scale(1);
+  
+  }
+}
+
+#chosenTeams{
+animation: teams-animation 2s  infinite;
+button:hover{
+  background-color: #2e0b0b;
+  color: #333;
+  border-width: 0.01vw;
+  border-color: rgb(42, 40, 40);
+}
+}
+
+

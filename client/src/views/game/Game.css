@@ -1,0 +1,631 @@
+
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+ background-image: url(./circuit.jpg); 
+  border-radius: 10px;
+  font-size: 1vw;
+  width: 100%;
+  height: fit-content;
+  background:-moz-repeating-radial-gradient();
+
+  border: 5px solid transparent ;
+  border-image-source: url(./fireborder.gif);
+  border-image-slice: 50.5; /* Half of the GIF's size */
+  border-image-repeat: fill ; /* Fill the entire border with the image */
+  border-image-outset: 1; /* Adjust this value to control spacing */
+  z-index: auto;
+  box-shadow:0 0 50px orangered ;
+
+
+ 
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+
+  border-radius: 30px;
+
+
+  font-size: 1vw;
+  color: rgb(255, 255, 255);
+  width: auto;
+  box-shadow:0 0 50px black ;
+  
+  border: 30px solid transparent ;
+  border-image-source: url(./frame.png);
+  border-image-slice: 110.5; /* Half of the GIF's size */
+  border-image-repeat: fill ; /* Fill the entire border with the image */
+  border-image-outset: 0; /* Adjust this value to control spacing */
+  z-index: +100;
+
+  font-family: 'DSEG7';
+  src: url('/src/assets/fonts/fonts-DSEG_v046/DSEG7-Classic-MINI/DSEG7ClassicMini-Bold.ttf') format('truetype'); /* Update the path as needed */
+  font-weight: normal;
+  font-style: normal;
+  
+}
+
+.character h3 {
+  color: rgb(255, 255, 255);
+  margin: 0;
+  font-size: 1vw;
+  border-radius: 10px;
+  
+}
+
+h3, p, #text {
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  
+}
+
+.characterStats{
+  
+  border: 30px solid transparent ;
+  border-image-source: url(./frame.png);
+  border-image-slice: 100.5; /* Half of the GIF's size */
+  border-image-repeat: fill ; /* Fill the entire border with the image */
+  border-image-outset: 0; /* Adjust this value to control spacing */
+  z-index: +200;
+
+  font-family: 'DSEG7';
+
+}
+.character img {
+ 
+  height: auto;
+  margin: 0;
+  text-align: justify;
+  padding: 0.1vw;
+  border-radius: 10px;
+
+}
+
+.character p {
+  color: rgb(255, 255, 255);
+  margin: 0;
+  font-size: 1vw;
+  
+}
+
+body {
+  user-select: none;
+  
+}
+
+button {
+  
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background-color: rgb(130, 121, 121);
+  color: #535050;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1vw;
+  filter: brightness(1.2);
+  background: #727171;
+  box-shadow: 0px 0px 25px orangered;
+ 
+}
+
+button:hover {
+  background-color: #fff;
+  color: #333;
+  border-width: 0.01vw;
+  border-color: rgb(42, 40, 40);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: 0px 0px 10px #000;
+  opacity: 0.4;
+}
+button:disabled:hover {
+  background-color: #504d4d;
+  color: #fff;
+  opacity: 0.2;
+  box-shadow: 0px 0px 10px #000;
+}
+
+
+
+@keyframes attack-animation {
+  0% {
+    transform: scale(1);
+    
+  }
+  50% {
+    transform: scale(1.2);
+   
+  }
+  100% {
+    transform: scale(1);
+   
+  }
+}
+
+
+@keyframes attack-animation3 {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(50);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+
+@keyframes attack-animation4 {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes attack-animation2 {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(10);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+@keyframes result-animation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  
+  90% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+
+@keyframes moneybag {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(3);
+    opacity: 1;
+  }
+  
+
+  
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.character.attacking {
+  animation: attack-animation 0.5s ease-in-out;
+}
+@media (min-width: 601px){
+.BlastNumbers, #healthtext {
+  animation: attack-animation2 2s ease-in-out;
+  background: transparent;
+  position: absolute;
+  top: 50%; /* Center the element vertically */
+  left: 50%; /* Center the element horizontally */
+  transform: translate(-50%, -50%); /* Center the element */
+  font-size:0.1vmin  ; 
+    font-weight: bold;
+    color: red !important;
+    opacity:0 ;
+  
+}}
+
+@media (min-width: 601px){
+  .BlastNumbers.animate, #healthtext.animate {
+    animation: attack-animation2 2s ease-in-out;
+    background: transparent;
+    position: absolute;
+    top: 50%; /* Center the element vertically */
+    left: 50%; /* Center the element horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
+    font-size:0.1vmin  ; 
+      font-weight: bold;
+      color: red !important;
+      opacity:1 !important;
+    
+  }}
+
+  @media (min-width: 601px){
+    .BlastNumbers2.animate, #healthtext2.animate {
+      animation: attack-animation2 2s ease-in-out;
+      background: transparent;
+      position: absolute;
+      top: 20%; /* Center the element vertically */
+      left: 20%; /* Center the element horizontally */
+      transform: translate(-50%, -50%); /* Center the element */
+      font-size:0.1vmin  ; 
+        font-weight: bold;
+        color: green !important;
+        opacity:1 !important;
+      
+    }}
+
+    @media (min-width: 601px){
+      .BlastNumbers2, #healthtext2 {
+        animation: attack-animation2 2s ease-in-out;
+        background: transparent;
+        position: absolute;
+        top: 20%; /* Center the element vertically */
+        left: 20%; /* Center the element horizontally */
+        transform: translate(-50%, -50%); /* Center the element */
+        font-size:0.1vmin  ; 
+          font-weight: bold;
+          color: green !important;
+          opacity:0 ;
+        
+      }}
+  
+  
+@media (min-width: 601px){
+  .BlastNumbers.animate, #healthtext.animate {
+    animation: attack-animation2 2s ease-in-out;
+    background: transparent;
+    position: absolute;
+    top: 50%; /* Center the element vertically */
+    left: 50%; /* Center the element horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
+    font-size:0.1vmin  ; 
+      font-weight: bold;
+      color: red !important;
+      opacity:1 !important;
+    
+  }}
+  
+/* Media query for devices with a maximum width of 600px (mobile) */
+@media (max-width: 600px) {
+  .BlastNumbers, #healthtext {
+    animation: attack-animation3 2s ease-in-out !important;
+    background: transparent !important;
+    position: absolute !important;
+    top: 50% !important; /* Center the element vertically */
+    left: 50% !important; /* Center the element horizontally */
+    transform: translate(-50%, -50%) !important; /* Center the element */
+    font-size:4vmin !important;
+      font-weight: bold !important;
+      color: red !important;
+      opacity:0;
+    
+  }
+}
+
+@media (max-width: 600px){
+  .BlastNumbers2, #healthtext2 {
+    animation: attack-animation4 2s ease-in-out;
+    background: transparent;
+    position: absolute;
+    top: 50%; /* Center the element vertically */
+    left: 50%; /* Center the element horizontally */
+    transform: translate(-50%, -50%); /* Center the element */
+    font-size:1vmin !important;
+      font-weight: bold;
+      color: green !important;
+      opacity:0 ;
+    
+  }}
+
+@media (max-width: 600px) {
+  .BlastNumbers.animate, #healthtext.animate {
+    animation: attack-animation3 2s ease-in-out !important;
+    background: transparent !important;
+    position: absolute !important;
+    top: 50% !important; /* Center the element vertically */
+    left: 50% !important; /* Center the element horizontally */
+    transform: translate(-50%, -50%) !important; /* Center the element */
+    font-size:4vmin !important;
+      font-weight: bold !important;
+      color: red !important;
+      opacity:1 !important;
+    
+  }
+}
+
+
+@media (max-width: 600px) {
+  .BlastNumbers2.animate, #healthtext2.animate {
+    animation: attack-animation4 2s ease-in-out !important;
+    background: transparent !important;
+    position: absolute !important;
+    top: 50% !important; /* Center the element vertically */
+    left: 50% !important; /* Center the element horizontally */
+    transform: translate(-50%, -50%) !important; /* Center the element */
+    font-size:3vmin !important;
+      font-weight: bold !important;
+      color: green !important;
+      opacity:1 !important;
+    
+  }
+}
+
+.reset-animation {
+  animation: none; /* Remove existing animation */
+  transform: scale(0.5);
+  opacity: 0;
+}
+.health-lost {
+  animation: flash-red 1.5s alternate;
+  opacity: 1;
+}
+
+@keyframes flash-red {
+  0% {
+    background-color: rgb(248, 6, 6);
+  }
+  1% {
+    background-color: rgba(255, 0, 0, 1);
+    opacity: 1;
+  }
+  5% {
+    opacity: 0.7;
+  }
+  10% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.7;
+  }
+  30% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.health-bar {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  height: 20px;
+ 
+  overflow: hidden;
+  font-size: 0.1vw;
+  color: rgb(130, 121, 121);
+  
+}
+
+.health-bar-progress {
+  background-color: #0f0;
+  height: 100%;
+  transition: width 0.2s ease-in-out;
+  font-size: 0.1vw;
+  box-shadow:0 0 50px  ;
+}
+
+.health-bar-progress.yellow {
+  background-color: #ff0;
+  box-shadow:0 0 50px  ;
+}
+
+.health-bar-progress.red {
+  background-color: #f00;
+  box-shadow:0 0 50px  ;
+}
+
+.high-scores-container {
+  border: 1px solid black;
+  padding: 20px;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 0.1vw;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 10px;
+  font-size: 1vw;
+}
+
+th,
+td {
+  padding: 5px;
+  font-size: 1vw;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.EnemyTags {
+  padding: 0.3vw;
+  padding-bottom: 0.2vw;
+  border-width: 0.2vw;
+  border-color: white;
+  border-radius: 0.4vw;
+  text-align: center;
+  box-shadow: 0px 0px 10px #000;
+  background-color: rgb(201, 66, 66);
+  width:100%;
+  height:auto;
+  font-size:0.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  
+}
+
+.PlayerTags {
+  padding: 0.3vw;
+  padding-bottom: 0.2vw;
+  border-width: 0.2vw;
+  border-color: white;
+  border-radius: 0.4vw;
+  text-align: center;
+  height: auto;
+  background-color: rgb(66, 100, 201);
+  width:100%;
+  font-size: 0.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0px 0px 10px #000;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+   
+  }
+  50% {
+    opacity: 0.7;
+  }
+ 
+  100% {
+    opacity: 0.5; /* Set the desired opacity */
+    
+  }
+}
+.modal {
+  border: 30px solid transparent;
+  border-image-source: url(./fireborder.gif);
+  border-image-slice: 70.5; /* Half of the GIF's size */
+  border-image-repeat: fill stretch; /* Fill the entire border with the image */
+  border-image-outset: 1; /* Adjust this value to control spacing */
+  z-index: 2;
+  background-color: #00000000;
+  color: #ffffff;
+  box-shadow:0 0 50px orangered;
+  
+}
+
+.fire {
+  border: 2px solid transparent;
+  border-image-source: url(./fireborder.gif);
+  border-image-slice: 5.5; /* Half of the GIF's size */
+  border-image-repeat: fill stretch; /* Fill the entire border with the image */
+  border-image-outset: 1; /* Adjust this value to control spacing */
+  z-index: 2;
+  background-color: transparent;
+  color: #ffffff;
+  box-shadow:0 0 50px orangered;
+  
+}
+
+.modalBlue {
+  border: 20px solid transparent ;
+  border-image-source: url(./fireborder.gif);
+  border-image-slice: 103.5; /* Half of the GIF's size */
+  border-image-repeat: fill ; /* Fill the entire border with the image */
+  border-image-outset: 1; /* Adjust this value to control spacing */
+  z-index: 2;
+  background-color: #00000000;
+  color: #ffffff;
+
+
+  
+}
+
+.flash-box {
+  position: relative;
+  
+}
+
+.flash-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 255, 0, 0.5); /* Tinted green with 50% opacity */
+  z-index: 1; /* Place the overlay on top of the element */
+  animation: flash 0.5s  infinite;
+}
+
+@keyframes flash {
+  0%, 100% {
+    background-color: transparent;
+  }
+  20% {
+    background-color: rgba(0, 255, 0, 0.5); /* First flash, green with 50% opacity */
+  }
+  40% {
+    background-color: transparent; /* Back to transparent */
+  }
+  60% {
+    background-color: rgba(0, 255, 0, 0.5); /* Second flash, green with 50% opacity */
+  }
+  80% {
+    background-color: transparent; /* Back to transparent */
+  }
+}
+
+#HealthbarBG {
+  position: absolute; /* Position it absolutely within a relative container */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width of the container */
+  height: 100%; /* Full height of the container */
+  z-index: 1; /* Lower z-index to keep it behind the squares */
+
+}
+
+
+@font-face {
+  font-family: 'DSEG7';
+  src: url('/src/assets/fonts/fonts-DSEG_v046/DSEG7-Classic-MINI/DSEG7ClassicMini-Bold.ttf') format('truetype'); /* Update the path as needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
