@@ -1,0 +1,104 @@
+.link:hover {
+  color:rgb(0, 0, 255)
+
+}
+.text {
+  color: white;
+}
+
+.team-box {
+    border: 0.4vw solid transparent;
+    border-radius: 10%;
+    transition: border-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .team-box:hover {
+    border: 5px solid transparent ;
+    border-image-source: url(./fireborder.gif);
+    border-image-slice: 10.5; /* Half of the GIF's size */
+    border-image-repeat: fill round ; /* Fill the entire border with the image */
+    border-image-outset: 1; /* Adjust this value to control spacing */
+    filter: hue-rotate(160deg);
+    z-index: auto;
+    border-radius: 50%;
+    transform: scale(1.15);
+  }
+  
+  .team-box.selected {
+    border: 5px solid transparent ;
+    border-image-source: url(./fireborder.gif);
+    border-image-slice: 10.5; /* Half of the GIF's size */
+    border-image-repeat: fill round ; /* Fill the entire border with the image */
+    border-image-outset: 1; /* Adjust this value to control spacing */
+    filter: hue-rotate(160deg);
+    z-index: auto;
+    border-radius: 50%;
+    transform: scale(1.15);
+  }
+
+  .enemyteam-box {
+    border: 0.4vw solid transparent;
+    border-radius: 10%;
+    transition: border-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .enemyteam-box:hover {
+    
+    transform: scale(1.15);
+    border: 5px solid transparent ;
+    border-image-source: url(./fireborder.gif);
+    border-image-slice: 10.5; /* Half of the GIF's size */
+    border-image-repeat: fill round ; /* Fill the entire border with the image */
+    border-image-outset: 1; /* Adjust this value to control spacing */
+    filter: hue-rotate(330deg);
+    z-index: auto;
+    border-radius: 50%;
+  }
+  
+  .enemyteam-box.selected {
+   
+    transform: scale(1.15);
+    border: 5px solid transparent ;
+    border-image-source: url(./fireborder.gif);
+    border-image-slice: 10.5; /* Half of the GIF's size */
+    border-image-repeat: fill round ; /* Fill the entire border with the image */
+    border-image-outset: 1; /* Adjust this value to control spacing */
+    filter: hue-rotate(330deg);
+    z-index: auto;
+    border-radius: 50%;
+  
+  }
+
+  @keyframes teams-animation {
+    0% {
+      transform: scale(1);
+     
+    }
+    50% {
+      transform: scale(1.1);
+   
+    }
+    100% {
+      transform: scale(1);
+    
+    }
+  }
+
+  #chosenTeams{
+animation: teams-animation 2s  infinite;
+
+  }
+
+  .custom-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./RAMPAGEBACK.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Set your desired opacity */
+    z-index: -10;
+  }
