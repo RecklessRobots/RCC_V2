@@ -1,8 +1,8 @@
 /*eslint-disable*/
-import { VStack, Heading, Button, Box,  Tag, Flex, Spacer, Text, Alert, Table, Thead, Tbody, Tr, Th, Td, Collapse, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, TagLabel, Avatar  } from '@chakra-ui/react';
+import { VStack, Heading, Button, Box,  Tag, Flex, Spacer, Text, Alert,  Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, TagLabel, Avatar  } from '@chakra-ui/react';
 import { useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { useMoralis, useMoralisQuery, useNewMoralisObject } from 'react-moralis';
+import { useMoralis } from 'react-moralis';
 import { HStack} from '@chakra-ui/react';
 import player from "./player.png";
 import enemy from "./enemy.png";
@@ -37,7 +37,7 @@ import LaserExp2 from './LaserExp2.mp4';
 import RR from './RR.png';
 import NFTGridEB from '../../components/NFTGridEB';
 import TopHighScores from './PlayerScores';
-import Hearts from './hearts';
+
 import MeltDowns from './meltdowns';
 import Timer from '../tournamentTimer';
 
@@ -2353,7 +2353,7 @@ return (
     </Box>
 <HStack>
 
-{Tokens > 2000  ? (
+{Tokens > 0  ? (
   <HStack>
       <Button fontSize={'1vw'} onClick={() => {
         setPlayerAttack(AttackType.Reloading);

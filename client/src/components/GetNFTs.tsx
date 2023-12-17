@@ -1,5 +1,3 @@
-import Moralis  from 'moralis';
-import { EvmChain } from '@moralisweb3/evm-utils';
 
 
 
