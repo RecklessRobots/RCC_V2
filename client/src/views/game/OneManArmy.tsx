@@ -1149,7 +1149,9 @@ const EnemyCharacter = (props: { name: string; image: string; attack: AttackType
   className={props.healthLost > 0 ? 'health-lost' : 'somename'}
   width="100%"
   height="auto"
-  src={EnemyTeam === 'Legends' || EnemyTeam === 'Wyverns'? LegendsEnemyImage : EnemyImage}
+
+  src={imageUrls[randomNumL]}
+  //{EnemyTeam === 'Legends' || EnemyTeam === 'Wyverns'? LegendsEnemyImage : EnemyImage}
 />
 
              {props.healthLost === 0 && props.playerAttackType !== 'Reloading' && (
@@ -2004,11 +2006,6 @@ if (!address){
 const [showRampageInfo, setShowRampageInfo] = useState(false);
 
 
-const MissileSoundRef = useRef<HTMLAudioElement | null>(null);
-const LaserSoundRef = useRef<HTMLAudioElement | null>(null);
-const GunsSoundRef = useRef<HTMLAudioElement | null>(null);
-const HealthSoundRef = useRef<HTMLAudioElement | null>(null);
-const MeleeSoundRef = useRef<HTMLAudioElement | null>(null); // Declare the ref for the sound
 
 
 /*
@@ -2131,35 +2128,85 @@ const buttonCommonStyles = {
   justifyContent: 'center'
 };
 
+
+const MissileSoundRef = useRef<HTMLAudioElement | null>(null);
+const LaserSoundRef = useRef<HTMLAudioElement | null>(null);
+const GunsSoundRef = useRef<HTMLAudioElement | null>(null);
+const HealthSoundRef = useRef<HTMLAudioElement | null>(null);
+const MeleeSoundRef = useRef<HTMLAudioElement | null>(null); // Declare the ref for the sound
 // Main component
 const AttackUI = () => {
   const totalItems = 5; // Corrected to match the number of buttons
 
+  
   return (
     <Flex direction={'row'} justifyContent="center" alignItems="center" position="relative" height="fit-content" width="full"> {/* Increased size */}
       {/* Central health frame */}
      
 
       {/* Position buttons in a circle */}
-      <AttackButton index={1} totalItems={totalItems} disabled={isAttacking || Lasers <= 0} onClick={() => { attack(AttackType.RayOfDeath); }}>
+      <AttackButton index={1} totalItems={totalItems} disabled={isAttacking || Lasers <= 0} onClick={() => { attack(AttackType.RayOfDeath);  if (LaserSoundRef.current) {
+        LaserSoundRef.current.currentTime = 0;
+        LaserSoundRef.current.play().then(() => {
+          // Playback started successfully
+        })
+        .catch(error => {
+          console.error('Playback failed:', error);
+        });;;
+      }}}>
         <img src={Swords} alt='RayOfDeath' />
+  
       </AttackButton>
-      <AttackButton index={2} totalItems={totalItems} disabled={isAttacking || Skill < 0.61} onClick={() => { attack(AttackType.Missiles); }}>
+   
+      <AttackButton index={2} totalItems={totalItems} disabled={isAttacking || Skill < 0.61} onClick={() => { attack(AttackType.Missiles);  if (MissileSoundRef.current) {
+        MissileSoundRef.current.currentTime = 0;
+        MissileSoundRef.current.play().then(() => {
+          // Playback started successfully
+        })
+        .catch(error => {
+          console.error('Playback failed:', error);
+        });;;
+      } }}>
         <img src={missiles} alt='Missiles' />
+      
       </AttackButton>
-      <AttackButton index={3} totalItems={totalItems} disabled={isAttacking || AttackRating < 0.16} onClick={() => { attack(AttackType.Miniguns); }}>
+  
+      <AttackButton index={3} totalItems={totalItems} disabled={isAttacking || AttackRating < 0.16} onClick={() => { attack(AttackType.Miniguns);  if (GunsSoundRef.current) {
+        GunsSoundRef.current.currentTime = 0;
+        GunsSoundRef.current.play().then(() => {
+          // Playback started successfully
+        })
+        .catch(error => {
+          console.error('Playback failed:', error);
+        });;
+      } }}>
         <img src={miniguns} alt='Miniguns' />
+      
       </AttackButton>
-      <AttackButton index={4} totalItems={totalItems} disabled={isAttacking} onClick={() => { attack(AttackType.Melee); }}>
+  
+      <AttackButton index={4} totalItems={totalItems} disabled={isAttacking} onClick={() => { attack(AttackType.Melee);
+        if (MeleeSoundRef.current) {
+          MeleeSoundRef.current.currentTime = 0;
+          MeleeSoundRef.current.play().then(() => {
+            // Playback started successfully
+          })
+          .catch(error => {
+            console.error('Playback failed:', error);
+          });
+        } }}>
         <img src={Melee} alt='Melee' />
+     
       </AttackButton>
+   
       <AttackButton index={5} totalItems={totalItems} disabled={isAttacking || HeldModules < 1} onClick={() => { RepairModules(); }}>
         <img src={Star} alt='RepairModules' />
-
+       
       </AttackButton>
-    
+ 
+
      
     </Flex>
+    
   );
 };
 
@@ -2347,7 +2394,30 @@ return (
      
     </HStack>
     {!gameOver && (
+      <VStack>
      <AttackUI />
+     <audio preload="none" ref={MeleeSoundRef}>
+     <source src={MeleeSound} type="audio/mpeg" />
+     Your browser does not support the audio element.
+   </audio>
+   <audio ref={LaserSoundRef}>
+   <source src={LaserSound} type="audio/mpeg" />
+   Your browser does not support the audio element.
+ </audio>
+ <audio ref={MissileSoundRef}>
+ <source src={MissileSound} type="audio/mpeg" />
+ Your browser does not support the audio element.
+</audio>
+<audio preload="none" ref={GunsSoundRef}>
+<source src={GunsSound} type="audio/mpeg" />
+Your browser does not support the audio element.
+</audio>
+<audio preload="none" ref={HealthSoundRef}>
+<source src={HealthSound} type="audio/mpeg" />
+Your browser does not support the audio element.
+</audio>
+<Button variant="outline" textColor={'black'} color='orangered' width={'-moz-fit-content'} fontSize={'1vw'} onClick={() => setGameOver(true)}>Quit round</Button>
+   </VStack>
     )}
     
     

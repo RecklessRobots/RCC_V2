@@ -1585,7 +1585,7 @@ return (
       {selectedPlayerTeam && selectedEnemyTeam && TokenData!=="0" && tournamentEnded===true &&(
         <VStack >
           
-          {enemyDataLoaded  && EXP===10000000000000000000089 && (
+          {enemyDataLoaded  && (
         <Button    bgColor='white' color="orangered" variant="outline" boxShadow='0px 0px  25px orangered' width={'full'} textColor={'black'}  mt={6} fontSize={'1.1vmax'}  isDisabled={isTimerRunning && Tokens===0} as={Link} to={gameMode==='Legacy' ? '/Rampage/Legacy' :'/Rampage/One-Man-Army'} >
           Play
         </Button>)}:<Box>  </Box>

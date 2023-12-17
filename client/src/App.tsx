@@ -15,8 +15,7 @@ import {LRanking} from './views/LRanking'
 import AppG from './views/game/AppG';
 import Parse from 'parse';
 import GameLoader from './views/GameLoader';
-import AppGgen1 from './views/game/AppGgen1';
-import ChibisGame from './views/game/AppGChibis';
+
 import RampageUniversal from './views/game/AppGCrofam'
 import Skilltree from './views/game/skilltree';
 import ClickerGame from './views/game/Clicker/ClickerGame';
